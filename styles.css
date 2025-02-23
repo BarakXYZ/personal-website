@@ -221,11 +221,11 @@ footer {
 }
 
 .background-ayef {
-    background: rgb(10, 24, 61);
-    background: -moz-radial-gradient(circle, rgba(10, 24, 61, 1) 0%, rgba(2, 8, 33, 1) 50%, rgba(0, 3, 20, 1) 100%);
-    background: -webkit-radial-gradient(circle, rgba(10, 24, 61, 1) 0%, rgba(2, 8, 33, 1) 50%, rgba(0, 3, 20, 1) 100%);
-    background: radial-gradient(circle, rgba(10, 24, 61, 1) 0%, rgba(2, 8, 33, 1) 50%, rgba(0, 3, 20, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0a183d", endColorstr="#000314", GradientType=1);
+    background: rgb(0, 24, 89);
+    background: -moz-radial-gradient(circle, rgba(0, 24, 89, 1) 0%, rgba(2, 8, 33, 1) 50%, rgba(0, 3, 20, 1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(0, 24, 89, 1) 0%, rgba(2, 8, 33, 1) 50%, rgba(0, 3, 20, 1) 100%);
+    background: radial-gradient(circle, rgba(0, 24, 89, 1) 0%, rgba(2, 8, 33, 1) 50%, rgba(0, 3, 20, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#001859", endColorstr="#000314", GradientType=1);
 }
 
 .background-levad {
