@@ -1,0 +1,355 @@
+<!-- BarakXYZ -> 12-15.02-2024 -> CS50x -> Week 8 -> HTML, CSS, JavaScript -> Homepage --> 
+<!-- 
+    Welcome to my homepage!
+    Disclaimer: I took some extra time to create this as my actual website.
+    I already had a website I built so I just worked on it more using new knowledge from CS50x!
+    I did use some code snippets from StackOverflow for some styling and logic.
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="styles.css" rel="stylesheet">
+        <title>BarakXYZ</title>
+    <script>
+        var currentSelection = ".full-page-overlay";
+        // Store video id's, titles & urls
+        const videoGroups = [
+            [ // Group 1
+                { id: ".background-letamid", src: "8KJJWDZYnAg", title: "Letamid", thumbnail: 'thumbnails/thumbnail_letamid.jpg'},
+                { id: ".background-hyperpleasure", src: "Ksvh9CUqpho", title: "Hyperpleasure Let's", thumbnail: 'thumbnails/thumbnail_hyper.jpg'},
+                { id: ".background-van", src: "_JFShtzxOO4", title: "Van Gogh", thumbnail: 'thumbnails/thumbnail_van-gogh.jpg'}
+            ],
+            [ // Group 2
+                { id: ".background-alakazam", src: "skwCvWCw8rc", title: "Alakazam", thumbnail: 'thumbnails/thumbnail_alakazam.jpg'},
+                { id: ".background-living", src: "yeRbmgX9evc", title: "Living the Dream", thumbnail: 'thumbnails/thumbnail_living_the_dream.jpg'},
+                { id: ".background-levad", src: "R76bLycvIs8", title: "Levad B'rachava", thumbnail: 'thumbnails/thumbnail_levad.jpg'},
+            ],
+            [ // Group 3
+                { id: ".background-self", src: "X4VpRSjuT78", title: "Self-Help Song", thumbnail: 'thumbnails/thumbnail_self_help.jpg' },
+                { id: ".background-world", src: "0ufsKRR7RAQ", title: "World Champ", thumbnail: 'thumbnails/thumbnail_world-champ.jpg' },
+                { id: ".background-nina", src: "teBs9Opsu8k", title: "Nina's Spray", thumbnail: 'thumbnails/thumbnail_nina.jpg' },
+            ]
+        ];
+
+        // Store 'About Text' for each video
+        var aboutTexts = {};
+
+        aboutTexts.hyperpleasureAbout = `
+            <div>
+                <h2 class="h2-video">ILAI ASHDOT<br>HYPERPLEASURE LET'S</h2><br>
+                <h4 class="h4-video">Glitchy & flickery -<br> Watch for your eyes :0</h4><br>
+                <h3 class="h3-video">I filmed, edited and directed.</h3>
+            </div>
+            `;
+
+        aboutTexts.letamidAbout = `
+            <div>
+                <h2 class="h2-video">Noam Doron - Letamid</h2><br>
+                <h4 class="h4-video">My first Unreal Engine Music Video</h4><br>
+                <h3 class="h3-video">I filmed, edited and directed.</h3>
+            </div>
+            `;
+        aboutTexts.vanAbout = `
+            <div>
+                <h2 class="h2-video">Gido - Van Gogh</h2><br>
+                <h4 class="h4-video">TRANSITIONS</h4><br>
+                <h3 class="h3-video">I filmed, edited and directed.</h3>
+            </div>
+            `;
+        aboutTexts.alakazamAbout = `
+            <div>
+                <h2 class="h2-video">Shemer - Alakazam</h2><br>
+                <h4 class="h4-video">Unreal Engine<br>Fun in the Sun</h4><br>
+                <h3 class="h3-video">I filmed, edited and directed.</h3>
+            </div>
+            `;
+        aboutTexts.livingAbout = `
+            <div>
+                <h2 class="h2-video">Nunu<br>Living the Dream</h2><br>
+                <h4 class="h4-video">It Pops</h4><br>
+                <h3 class="h3-video">Written & Directed by<br>Adam Gabay, Nunu & Me<br>Filmed, Edited & VFX by me</h3>
+            </div>
+            `;
+        aboutTexts.levadAbout = `
+            <div>
+                <h2 class="h2-video">Eden Derso<br>Levad B'rachava</h2><br>
+                <h4 class="h4-video">Y2K - ON</h4><br>
+                <h3 class="h3-video">I filmed, edited and directed.</h3>
+            </div>
+            `;
+        aboutTexts.selfAbout = `
+            <div>
+                <h2 class="h2-video">The Kims<br>Self-help song</h2><br>
+                <h4 class="h4-video">Oyoyoyoyoyoyoy</h4><br>
+                <h3 class="h3-video">I filmed, edited and directed.</h3>
+            </div>
+            `;
+        aboutTexts.worldAbout = `
+            <div>
+                <h2 class="h2-video">ILAI ASHDOT<br>WORLD CHAMP</h2><br>
+                <h4 class="h4-video">CS1.6</h4><br>
+                <h3 class="h3-video">I edited and directed.<br>Co-created with Ilai <3</h3>
+            </div>
+            `;
+        aboutTexts.ninaAbout = `
+            <div>
+                <h2 class="h2-video">Nina's Spray</h2><br>
+                <h4 class="h4-video">Hmmm... so about that...</h4><br>
+                <h3 class="h3-video">Music? Ilai<br>Visuals? me</h3>
+            </div>
+            `;
+
+        // Track current 'Group Index'
+        let currentGroupIndex = 0;
+
+        // Convert "string" to "stringAbout" to call its content.
+        function transformString(inputString) {
+        const parts = inputString.split('-');
+        if (parts.length >= 2) {
+            const result = parts[1] + "About";
+            return result;
+        } else {
+            return "InvalidInput";
+        }
+        }
+
+        // Updating grid
+        function updateVideoGrid() {
+            const currentVideos = videoGroups[currentGroupIndex];
+            const gridContainer = document.querySelector('.grid');
+
+            // Clear current grid
+            gridContainer.innerHTML = '';
+        
+        // Convert "string" to "stringAbout" to call its content.
+        function transformString(inputString) {
+        const parts = inputString.split('-');
+
+        if (parts.length >= 2) {
+            // Take the second part (after the '-') and cat "About"
+            const result = parts[1] + "About";
+            return result;
+        } else {
+            return "InvalidInput";
+        }
+        }
+        
+            // Append the new grid items
+            currentVideos.forEach(video => {
+                const gridItem = document.createElement('div');
+                gridItem.className = 'grid-item';
+                gridItem.id = video.id;
+                gridItem.innerHTML = `
+                    <img src=${video.thumbnail} alt="Project Image">
+                    <div class="overlay">
+                        <div class="project-title">${video.title}</div>
+                    </div>
+                `;
+
+                // Event listener for each grid item
+                gridItem.addEventListener('click', function() {
+                    if (currentSelection === '.full-page-overlay')
+                    {                       
+                        document.querySelector('.box').style.zIndex = 6;
+                        document.querySelector('.box3').style.zIndex = 6;
+                        document.querySelector('.box').style.opacity = 1;
+                        document.querySelector('.box3').style.opacity = 1;
+                        document.querySelector('.box2').style.opacity = 0;
+                    }
+
+                    const aboutKey = transformString(gridItem.id);
+                    if (aboutKey in aboutTexts) {
+                        document.querySelector('#about-video').innerHTML = aboutTexts[aboutKey];
+                    } else {
+                        console.error("Content for the key '" + aboutKey + "' was not found.");
+                    }
+
+                    document.querySelector('#currentContent').innerHTML = `
+                        <iframe width="1280" height="720" src="https://www.youtube.com/embed/${video.src}?&controls=1" title="${video.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    `;
+                    if (currentSelection != gridItem.id)
+                    {
+                        // alert(gridItem.id); // Debug
+                        document.querySelector(currentSelection).style.zIndex = -2; // Push older to the back
+                        document.querySelector(currentSelection).style.opacity = 0; // Set his opacity to 0
+                        currentSelection = gridItem.id; // Store newest selection
+                        document.querySelector(gridItem.id).style.zIndex = -1;  // Push the newer to the front
+                        document.querySelector(gridItem.id).style.opacity = 1;  // Set his opacity to 1
+                    }
+                });
+                gridItem.addEventListener('mouseover', function() {
+                    if (currentSelection != gridItem.id)
+                    {
+                        if (currentSelection === '.full-page-overlay') {
+                            document.querySelector(".box3").style.opacity = 1;
+                            const aboutKey = transformString(gridItem.id);
+                            if (aboutKey in aboutTexts) {
+                                document.querySelector('#about-video').innerHTML = aboutTexts[aboutKey];
+                            } else {
+                            console.error("Content for the key '" + aboutKey + "' was not found.");
+                            document.querySelector(gridItem.id).style.opacity = 1;
+                            }
+                        }
+                        document.querySelector(gridItem.id).style.opacity = 1;
+                    }
+                });
+                gridItem.addEventListener('mouseout', function(){
+                    if (currentSelection != gridItem.id){
+                        if (currentSelection === '.full-page-overlay')
+                        {
+                            document.querySelector(".box3").style.opacity = 0;
+                            // alert(currentSelection); // Debug
+                        }
+                        document.querySelector(gridItem.id).style.opacity = 0;
+                    }
+                });
+
+                gridContainer.appendChild(gridItem);
+            });
+        }
+
+        // Change video group (1,2,3 | 4,5,6 | 7,8,9)
+        function scroll_videos(buttonId) {
+            if (buttonId === "left-button") {
+                // Decrease index to show the previous group
+                currentGroupIndex = (currentGroupIndex - 1 + videoGroups.length) % videoGroups.length;
+            } else if (buttonId === "right-button") {
+                // Increase index to show the next group
+                currentGroupIndex = (currentGroupIndex + 1) % videoGroups.length;
+            }
+            updateVideoGrid();
+        }
+
+        //      *****                DOM CONTENT LOADED                *******               //
+
+            document.addEventListener('DOMContentLoaded', function() {
+
+                // Store default 'hello' content
+                var defaultContent = `
+                    <div class="about-text">
+                        <div class="gradient-text-orange">
+                            <p class="about-paragraph">Hello there!<br>
+                                I'm Barak, a developer, director, and a multidisciplinary tech artist.<br>
+                                <span class="smaller-text">(but really, just in love with technology, 3D and AI ^~^)</span><br>
+                                I'm currently studying Computer Science and programming,<br>
+                                and planning to dive deeper into Assembly and 3D within C to master the basics.<br>
+                                I work full-time as a game developer in Unreal Engine,<br>
+                                creating applications, digital avatars, virtual productions and VFX<br>
+                                <span class="smaller-text">(and sometimes music *~*)</span><br>
+                                I also work as a freelancer, using these technologies to create music videos.<br><br>
+                                Thank you so much for stopping by!<br>
+                                Feel free to contact me and let me know what you're up to!<br>
+                                    <a href="#" id="copyEmail">iBarakXYZ@gmail.com</a>
+                            </p>
+                        </div>
+                        <h2 class="gradient-text-purple-2"><br><br>Click on any video from the below to start watching :3</h2>
+                    </div>`;
+                
+                function callHomePage(){
+                    if (currentSelection != ".full-page-overlay")
+                    {
+                        // alert(gridItem.id); // Debug
+                        document.querySelector('#hello-page').innerHTML = defaultContent;
+                        document.querySelector('.box').style.opacity = 0;
+                        document.querySelector('.box3').style.opacity = 0;
+                        document.querySelector('.box2').style.opacity = 1;
+                        document.querySelector(currentSelection).style.zIndex = -2; // Push older to the back
+                        document.querySelector(currentSelection).style.opacity = 0; // Set his opacity to 0
+                        currentSelection = ".full-page-overlay"; // Store newest selection
+                        document.querySelector(currentSelection).style.opacity = 1;  // Set his opacity to 1
+                        document.querySelector('.box').style.zIndex = 5;
+                        document.querySelector('.box3').style.zIndex = 5;
+                    }
+                }
+                // Assign default content
+                document.querySelector('#hello-page').innerHTML = defaultContent;
+
+                updateVideoGrid(); // Initial call to display the first group of videos
+                
+                document.body.classList.add('cursor-default'); // Default Cursor
+                document.addEventListener('mousedown', function() {
+                    document.body.classList.add('cursor-down'); // Cursor on Mouse Down
+                });
+
+                document.addEventListener('mouseup', function() {
+                    document.body.classList.remove('cursor-down'); // Return to Default Cursor on Mouse Up
+                });
+
+                // On header Click -> Set 'Current Video' space to 'Default Content'
+                document.querySelector('#header-barak').addEventListener('click', function(){
+                    callHomePage();
+                });
+
+                // Track User's Clicks (to switch to default page == 4)
+                let clickCounter = 0;
+
+                // Check if overlay was clicked
+                document.querySelector('#full-page-overlay-click-detact').addEventListener('click', function() {
+                    // Increment the counter
+                    clickCounter++;
+                    
+                    // if 4 times -> return to home Default Content
+                    if (clickCounter === 4) {
+                        // alert("click");  // Debug
+                        callHomePage();
+                        clickCounter = 0;
+                    }
+                });
+
+                // Needs HTTPS certificate to work properly? -> Currently won't work
+                document.getElementById('copyEmail').addEventListener('click', async function(event) {
+                    event.preventDefault();
+
+                    try {
+                        await navigator.clipboard.writeText('iBarakXYZ@gmail.com');
+                        alert('Email address copied to clipboard!'); // On Success
+                    } catch (err) {
+                        console.error('Failed to copy email:', err);
+                        alert('Failed to copy email. Please try manually.'); // On Fail
+                    }
+                });
+            });
+    </script>
+    </head>
+    <body>
+        <div id="full-page-overlay" class="full-page-overlay"></div>
+        <div id="full-page-overlay-click-detact" class="full-page-overlay-click-detact"></div>
+        <div id="background-alakazam" class="background-alakazam"></div>
+        <div id="background-letamid" class="background-letamid"></div>
+        <div id="background-van" class="background-van"></div>
+        <div id="background-hyperpleasure" class="background-hyperpleasure"></div>
+        <div id="background-living" class="background-living"></div>
+        <div id="background-levad" class="background-levad"></div>
+        <div id="background-self" class="background-self"></div>
+        <div id="background-world" class="background-world"></div>
+        <div id="background-nina" class="background-nina"></div>
+        <header>
+            <h1 id="header-barak" class="gradient-text-purple">BarakXYZ</h1>
+        </header>
+        <div class="box-container">
+            <div id="currentContent" class="box"></div>
+            <div id="hello-page" class="box2"></div>
+            <div id="about-video" class="box3"></div>
+        </div>
+
+        <div class="content-wrapper">
+            <button class="transparent-button" id="left-button" onclick="scroll_videos(this.id)">
+                <img src="buttons/backhand-index-pointing-left_1f448.png" alt="Button Image">
+            </button>
+            <div class="grid">
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+            </div>
+            <button class="transparent-button" id="right-button" onclick="scroll_videos(this.id)">
+                <img src="buttons/backhand-index-pointing-right_1f449.png" alt="Button Image">
+            </button>
+        </div>
+    </body>
+</html>
+
+<!-- 
+    https://cs50.harvard.edu/x/2024/psets/8/homepage/
+-->
