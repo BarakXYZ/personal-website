@@ -169,8 +169,9 @@ footer {
 
 .background-alakazam,
 .background-letamid,
+.background-ayef,
 .background-hyperpleasure,
-.background-levad,
+/* .background-levad, */
 .background-living,
 .background-nina,
 .background-self,
@@ -220,11 +221,11 @@ footer {
 }
 
 .background-ayef {
-    background: rgb(23, 120, 204);
-    background: -moz-linear-gradient(90deg, rgba(23, 120, 204, 1) 0%, rgba(223, 38, 0, 1) 100%);
-    background: -webkit-linear-gradient(90deg, rgba(23, 120, 204, 1) 0%, rgba(223, 38, 0, 1) 100%);
-    background: linear-gradient(90deg, rgba(23, 120, 204, 1) 0%, rgba(223, 38, 0, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1778cc", endColorstr="#df2600", GradientType=1);
+    background: rgb(10, 24, 61);
+    background: -moz-radial-gradient(circle, rgba(10, 24, 61, 1) 0%, rgba(2, 8, 33, 1) 50%, rgba(0, 3, 20, 1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(10, 24, 61, 1) 0%, rgba(2, 8, 33, 1) 50%, rgba(0, 3, 20, 1) 100%);
+    background: radial-gradient(circle, rgba(10, 24, 61, 1) 0%, rgba(2, 8, 33, 1) 50%, rgba(0, 3, 20, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0a183d", endColorstr="#000314", GradientType=1);
 }
 
 .background-levad {
