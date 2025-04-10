@@ -1,11 +1,10 @@
 import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "export",
-  // Set basePath for GitHub Pages (replace 'your-repo-name' with your actual repository name)
-  basePath: process.env.NODE_ENV === "production" ? "/personal-website" : "",
-  // Add assetPrefix for proper asset loading
-  assetPrefix:
-    process.env.NODE_ENV === "production" ? "/personal-website" : ".",
+  // When using a custom domain, we don't need basePath
+  basePath: "",
+  // No need for assetPrefix with custom domain
+  // assetPrefix is only needed for GitHub Pages subdirectory deployments
   // For GitHub Pages, images need to be unoptimized
   images: {
     unoptimized: true,
