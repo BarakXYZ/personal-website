@@ -99,6 +99,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
   const isMobile = () => {
     return window && window.innerWidth < 768;
+    // return false;
   };
 
   return (
@@ -262,7 +263,8 @@ export const Card = ({
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={handleOpen}
         // Vertical
-        className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-80 w-56 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10"
+        // className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-80 w-56 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10"
+        className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-[40rem] w-96 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10"
 
         // Horizontal
         // className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-56 w-80 md:h-96 md:w-[40rem] overflow-hidden flex flex-col items-start justify-start relative z-10"
