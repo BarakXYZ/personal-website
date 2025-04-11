@@ -81,7 +81,7 @@ export const AnimatedTooltip = ({
                   translateX: translateX,
                   rotate: rotate,
                 }}
-                className="absolute -top-16 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center justify-center rounded-md bg-black px-4 py-2 text-xs shadow-xl max-w-[500px] w-max"
+                className="absolute -top-16 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center justify-center rounded-md bg-black px-4 py-2 text-xs shadow-xl max-w-[420px] w-max"
                 role="tooltip"
                 id={`tooltip-${item.id}`}
               >

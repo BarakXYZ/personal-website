@@ -61,46 +61,52 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
   const scrollLeft = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -300, behavior: "smooth" });
+      carouselRef.current.scrollBy({
+        left: -384 - 8, // Card width (w-96) - padding
+        behavior: "smooth",
+      });
     }
   };
 
   const scrollRight = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 300, behavior: "smooth" });
+      carouselRef.current.scrollBy({
+        left: 384 + 8, // Card width (w-96) + padding
+        behavior: "smooth",
+      });
     }
   };
 
   const handleCardClose = (index: number) => {
     if (carouselRef.current) {
-      const cardWidth = isMobile() ? 230 : 384; // (md:w-96)
-      const gap = isMobile() ? 4 : 8;
+      // const cardWidth = isMobile() ? 230 : 384; // (md:w-96)
+      // const gap = isMobile() ? 4 : 8;
 
-      // Get the container width to calculate center position
-      const containerWidth = carouselRef.current.clientWidth;
+      // // Get the container width to calculate center position
+      // const containerWidth = carouselRef.current.clientWidth;
 
-      // Calculate the position of the card
-      const cardPosition = (cardWidth + gap) * index;
+      // // Calculate the position of the card
+      // const cardPosition = (cardWidth + gap) * index;
 
-      // Calculate the scroll position to center the card
-      // Subtract half the container width, then add half the card width
-      const scrollPosition = cardPosition - containerWidth / 2 + cardWidth / 2;
+      // // Calculate the scroll position to center the card
+      // // Subtract half the container width, then add half the card width
+      // const scrollPosition = cardPosition - containerWidth / 2 + cardWidth / 2;
 
-      // Make sure we don't scroll to a negative position
-      const finalScrollPosition = Math.max(0, scrollPosition);
+      // // Make sure we don't scroll to a negative position
+      // const finalScrollPosition = Math.max(0, scrollPosition);
 
-      carouselRef.current.scrollTo({
-        left: finalScrollPosition,
-        behavior: "smooth",
-      });
+      // carouselRef.current.scrollTo({
+      //   left: finalScrollPosition,
+      //   behavior: "smooth",
+      // });
       setCurrentIndex(index);
     }
   };
 
-  const isMobile = () => {
-    return window && window.innerWidth < 768;
-    // return false;
-  };
+  // const isMobile = () => {
+  //   return window && window.innerWidth < 768;
+  //   // return false;
+  // };
 
   return (
     <CarouselContext.Provider
@@ -264,6 +270,7 @@ export const Card = ({
         onClick={handleOpen}
         // Vertical
         // className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-80 w-56 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10"
+        // Version that keeps the cards at the same size in Mobile & Wide Screens
         className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-[40rem] w-96 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10"
 
         // Horizontal

@@ -115,7 +115,7 @@ const data = [
         videoData={{
           videoId: "0ufsKRR7RAQ",
           title: "Music by: Ilai Ashdot",
-          description: "Yes.",
+          description: "-----------------------------------------------Yes",
         }}
       />
     ),
@@ -143,7 +143,7 @@ const data = [
         videoData={{
           videoId: "yeRbmgX9evc",
           title: "Music by: Nunu (prod. by Ilai Ashdot)",
-          description: "Hi boy!",
+          description: "---------------------------------------------hi boy",
         }}
       />
     ),
@@ -172,7 +172,7 @@ const data = [
         videoData={{
           videoId: "R76bLycvIs8",
           title: "Music by: Eden Derso & Maor Cohen",
-          description: "Y2K Purim vibes yeahhhhhhhhhhhh",
+          description: "----------------------------Y2K Purim vibes yeah",
         }}
       />
     ),
