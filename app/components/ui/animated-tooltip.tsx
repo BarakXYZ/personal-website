@@ -80,18 +80,19 @@ export const AnimatedTooltip = ({
                 style={{
                   translateX: translateX,
                   rotate: rotate,
-                  whiteSpace: "nowrap",
                 }}
-                className="absolute -top-16 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center justify-center rounded-md bg-black px-4 py-2 text-xs shadow-xl"
+                className="absolute -top-16 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center justify-center rounded-md bg-black px-4 py-2 text-xs shadow-xl max-w-[500px] w-max"
                 role="tooltip"
                 id={`tooltip-${item.id}`}
               >
                 <div className="absolute inset-x-10 -bottom-px z-30 h-px w-[20%] bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
                 <div className="absolute -bottom-px left-10 z-30 h-px w-[40%] bg-gradient-to-r from-transparent via-sky-500 to-transparent" />
-                <div className="relative z-30 text-base font-bold text-white">
+                <div className="relative z-30 text-base font-bold text-white text-center">
                   {item.name}
                 </div>
-                <div className="text-xl text-white">{item.designation}</div>
+                <div className="text-xl text-white text-center break-words">
+                  {item.designation}
+                </div>
                 {clickedIndex === item.id && (
                   <div className="absolute -bottom-5 left-0 right-0 mx-auto text-center text-xs text-white/70">
                     Tap to close
@@ -128,9 +129,9 @@ export const AnimatedTooltip = ({
               width={512}
               src={item.image}
               alt={item.name}
-              className={`relative !m-0 h-36 w-36 rounded-full border-1 border-white/80 object-cover object-top !p-0 transition duration-500 
-                ${isTooltipVisible(item.id) ? "z-30 scale-205" : ""} 
-                ${clickedIndex === null ? "group-hover:z-30 group-hover:scale-205" : ""}`}
+              className={`relative !m-0 h-32 w-32 rounded-full border-1 border-white/80 object-cover object-top !p-0 transition duration-500 
+                ${isTooltipVisible(item.id) ? "z-30 scale-196" : ""} 
+                ${clickedIndex === null ? "group-hover:z-30 group-hover:scale-196" : ""}`}
             />
             <span className="sr-only">View details for {item.name}</span>
           </button>
